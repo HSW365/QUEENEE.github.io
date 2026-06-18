@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>QUEENEE.io — Get Your Free Business Website Demo</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#0A0A0F;color:#D8D8E8;font-family:'Barlow',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+:root{
+  --bg:#0A0A0F;--s1:#0F0F16;--s2:#13131C;--card:#181824;
+  --b1:#222232;--b2:#2E2E42;
+  --pu:#7C3AED;--pul:#9155FF;--pud:#5B21B6;
+  --acc:#C4B5FD;--wh:#F0F0F8;--md:#7070A0;--dm:#3A3A55;
+  --gr:#10B981;--re:#EF4444;--am:#F59E0B;
+  --head:'Barlow Condensed',sans-serif;
+}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:var(--pu)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:999;height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;background:rgba(10,10,15,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--b1)}
+.logo{font-family:var(--head);font-size:18px;font-weight:900;letter-spacing:2px;color:var(--wh);text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo-sq{width:26px;height:26px;background:var(--pu);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#fff}
+.nav-back{color:var(--md);text-decoration:none;font-size:13px;font-weight:500;border:1px solid var(--b2);padding:7px 16px;border-radius:4px;transition:all 0.15s}
+.nav-back:hover{border-color:var(--pul);color:var(--wh)}
+
+/* STEP INDICATOR */
+.steps-bar{background:var(--s1);border-bottom:1px solid var(--b1);padding:20px 40px;display:flex;align-items:center;justify-content:center;gap:0;margin-top:58px}
+.step-item{display:flex;align-items:center;gap:10px}
+.step-circle{width:32px;height:32px;border-radius:50%;border:1px solid var(--b2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--md);transition:all 0.3s;font-family:'Barlow',sans-serif}
+.step-circle.active{background:var(--pu);border-color:var(--pu);color:#fff}
+.step-circle.done{background:var(--gr);border-color:var(--gr);color:#fff}
+.step-label{font-size:12px;font-weight:600;color:var(--md);transition:color 0.3s}
+.step-label.active{color:var(--wh)}
+.step-label.done{color:var(--gr)}
+.step-line{width:60px;height:1px;background:var(--b2);margin:0 12px;transition:background 0.3s}
+.step-line.done{background:var(--gr)}
+
+/* MAIN */
+main{min-height:calc(100vh - 58px - 73px);padding:48px 40px;display:flex;flex-direction:column;align-items:center}
+.page{width:100%;max-width:680px;display:none;animation:fadeIn 0.3s ease}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* HEADINGS */
+.page-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--pul);margin-bottom:10px}
+.page-h{font-family:var(--head);font-size:clamp(32px,5vw,52px);font-weight:900;text-transform:uppercase;line-height:0.93;color:var(--wh);margin-bottom:12px}
+.page-sub{font-size:15px;color:var(--md);line-height:1.7;margin-bottom:36px;max-width:500px}
+
+/* FORM */
+.field{margin-bottom:18px}
+.field label{display:block;font-size:12px;font-weight:600;color:var(--md);letter-spacing:0.05em;margin-bottom:7px;text-transform:uppercase}
+.field input,.field select,.field textarea{
+  width:100%;background:var(--s2);border:1px solid var(--b1);border-radius:5px;
+  padding:12px 16px;color:var(--wh);font-size:14px;font-family:'Barlow',sans-serif;
+  outline:none;transition:border-color 0.15s;
+}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--pu)}
+.field input::placeholder,.field textarea::placeholder{color:var(--dm)}
+.field select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237070A0' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.field select option{background:var(--s2);color:var(--wh)}
+.field textarea{resize:vertical;min-height:80px;line-height:1.6}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+/* TIER CARDS */
+.tier-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:28px}
+.tier-card{
+  background:var(--card);border:2px solid var(--b1);border-radius:8px;
+  padding:22px 20px;cursor:pointer;transition:all 0.2s;position:relative;
+}
+.tier-card:hover{border-color:var(--b2)}
+.tier-card.selected{border-color:var(--pu);background:linear-gradient(135deg,var(--card),rgba(124,58,237,0.06))}
+.tier-card.selected::after{content:'Selected';position:absolute;top:-10px;right:14px;background:var(--pu);color:#fff;font-size:9px;font-weight:800;padding:2px 10px;border-radius:3px;letter-spacing:0.1em}
+.tier-popular{position:absolute;top:-10px;left:14px;background:var(--am);color:#000;font-size:9px;font-weight:800;padding:2px 10px;border-radius:3px;letter-spacing:0.1em}
+.tier-name{font-family:var(--head);font-size:22px;font-weight:900;text-transform:uppercase;color:var(--wh);margin-bottom:4px}
+.tier-price{font-family:var(--head);font-size:32px;font-weight:900;color:var(--pul);line-height:1;margin-bottom:2px}
+.tier-cycle{font-size:11px;color:var(--md);margin-bottom:14px}
+.tier-features{list-style:none;display:flex;flex-direction:column;gap:6px}
+.tier-features li{font-size:12px;color:var(--md);display:flex;gap:7px;align-items:flex-start;line-height:1.4}
+.tier-features li::before{content:'';width:12px;height:12px;border-radius:50%;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);flex-shrink:0;margin-top:1px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M2 5l2.5 2.5 3.5-4' stroke='%2310B981' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center;background-size:9px}
+
+/* ADDONS */
+.addon-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px}
+.addon-card{
+  background:var(--card);border:1px solid var(--b1);border-radius:6px;
+  padding:16px;cursor:pointer;transition:all 0.2s;display:flex;gap:12px;align-items:flex-start;
+}
+.addon-card:hover{border-color:var(--b2)}
+.addon-card.selected{border-color:var(--pu);background:rgba(124,58,237,0.05)}
+.addon-check{
+  width:18px;height:18px;border:1px solid var(--b2);border-radius:3px;
+  flex-shrink:0;margin-top:2px;transition:all 0.15s;
+  display:flex;align-items:center;justify-content:center;
+}
+.addon-card.selected .addon-check{background:var(--pu);border-color:var(--pu)}
+.addon-check-inner{width:10px;height:10px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;display:none}
+.addon-card.selected .addon-check-inner{display:block}
+.addon-info h4{font-size:13px;font-weight:700;color:var(--wh);margin-bottom:3px}
+.addon-info p{font-size:11px;color:var(--md);line-height:1.5}
+.addon-price{font-size:12px;color:var(--pul);font-weight:600;margin-top:5px}
+
+/* DEMO PREVIEW */
+.demo-wrap{background:var(--card);border:1px solid var(--b1);border-radius:10px;overflow:hidden;margin-bottom:24px}
+.demo-browser-bar{background:var(--s2);padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--b1)}
+.demo-dots{display:flex;gap:5px}
+.demo-dot{width:9px;height:9px;border-radius:50%}
+.demo-url-bar{flex:1;background:var(--s1);border-radius:3px;padding:4px 10px;font-size:10px;color:var(--dm);margin:0 10px;border:1px solid var(--b1)}
+.demo-content{padding:0;min-height:320px;position:relative}
+.demo-loading{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:320px;gap:16px}
+.demo-spinner{width:36px;height:36px;border:2px solid var(--b2);border-top-color:var(--pu);border-radius:50%;animation:spin 0.8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.demo-loading p{font-size:13px;color:var(--md)}
+.demo-loading .demo-status{font-size:11px;color:var(--dm);font-family:'Barlow',sans-serif}
+#demoFrame{width:100%;min-height:480px;border:none;display:none}
+
+/* SUMMARY */
+.summary-box{background:var(--s2);border:1px solid var(--b1);border-radius:8px;padding:24px;margin-bottom:24px}
+.summary-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--b1);font-size:14px}
+.summary-row:last-child{border-bottom:none;padding-top:14px;margin-top:4px}
+.summary-row:last-child .summary-label{font-weight:700;color:var(--wh);font-size:15px}
+.summary-row:last-child .summary-val{font-family:var(--head);font-size:24px;font-weight:900;color:var(--pul)}
+.summary-label{color:var(--md)}
+.summary-val{color:var(--wh);font-weight:600}
+.deposit-note{font-size:12px;color:var(--dm);margin-top:4px;text-align:right}
+
+/* BUTTONS */
+.btn-next{
+  width:100%;background:var(--pu);color:#fff;padding:15px;border-radius:5px;
+  font-weight:700;font-size:15px;border:none;cursor:pointer;
+  font-family:'Barlow',sans-serif;transition:all 0.2s;letter-spacing:0.03em;
+  box-shadow:0 4px 20px rgba(124,58,237,0.25);
+}
+.btn-next:hover{background:var(--pud);transform:translateY(-1px)}
+.btn-next:disabled{opacity:0.4;cursor:not-allowed;transform:none}
+.btn-back{
+  background:transparent;border:1px solid var(--b2);color:var(--md);
+  padding:12px 24px;border-radius:5px;font-size:14px;font-weight:600;
+  cursor:pointer;font-family:'Barlow',sans-serif;transition:all 0.15s;
+  margin-right:12px;
+}
+.btn-back:hover{border-color:var(--b2);color:var(--wh)}
+.btn-row{display:flex;align-items:center;margin-top:20px}
+.btn-pay{
+  flex:1;background:var(--pu);color:#fff;padding:15px;border-radius:5px;
+  font-weight:700;font-size:15px;text-decoration:none;text-align:center;
+  display:block;transition:all 0.2s;letter-spacing:0.03em;
+  box-shadow:0 4px 20px rgba(124,58,237,0.25);
+}
+.btn-pay:hover{background:var(--pud)}
+.or-divider{text-align:center;font-size:12px;color:var(--dm);margin:16px 0;position:relative}
+.or-divider::before,.or-divider::after{content:'';position:absolute;top:50%;width:45%;height:1px;background:var(--b1)}
+.or-divider::before{left:0}.or-divider::after{right:0}
+.btn-cashapp{
+  width:100%;background:rgba(0,212,90,0.08);border:1px solid rgba(0,212,90,0.25);
+  color:#00D45A;padding:13px;border-radius:5px;font-weight:700;font-size:14px;
+  text-decoration:none;text-align:center;display:block;transition:all 0.2s;
+}
+.btn-cashapp:hover{background:rgba(0,212,90,0.15)}
+
+/* INFO BOX */
+.info-box{background:rgba(124,58,237,0.05);border:1px solid rgba(124,58,237,0.15);border-radius:6px;padding:14px 18px;margin-bottom:20px;font-size:13px;color:var(--md);line-height:1.7}
+.info-box strong{color:var(--pul)}
+
+/* SUCCESS */
+.success-icon{width:64px;height:64px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px}
+.success-icon svg{width:28px;height:28px;fill:none;stroke:#10B981;stroke-width:2;stroke-linecap:round}
+
+@media(max-width:700px){
+  nav{padding:0 16px}
+  .steps-bar{padding:16px 16px;gap:0}
+  .step-line{width:28px}
+  .step-label{display:none}
+  main{padding:32px 16px}
+  .tier-grid,.addon-grid,.field-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo"><div class="logo-sq" style="font-size:9px;letter-spacing:-0.5px">QN</div>QUEENEE.io</a>
+  <a href="index.html" class="nav-back">Back to Site</a>
+</nav>
+
+<!-- STEP BAR -->
+<div class="steps-bar">
+  <div class="step-item">
+    <div class="step-circle active" id="sc1">1</div>
+    <div class="step-label active" id="sl1">Your Business</div>
+  </div>
+  <div class="step-line" id="line1"></div>
+  <div class="step-item">
+    <div class="step-circle" id="sc2">2</div>
+    <div class="step-label" id="sl2">Choose Plan</div>
+  </div>
+  <div class="step-line" id="line2"></div>
+  <div class="step-item">
+    <div class="step-circle" id="sc3">3</div>
+    <div class="step-label" id="sl3">Your Demo</div>
+  </div>
+  <div class="step-line" id="line3"></div>
+  <div class="step-item">
+    <div class="step-circle" id="sc4">4</div>
+    <div class="step-label" id="sl4">Add-Ons</div>
+  </div>
+  <div class="step-line" id="line4"></div>
+  <div class="step-item">
+    <div class="step-circle" id="sc5">5</div>
+    <div class="step-label" id="sl5">Checkout</div>
+  </div>
+</div>
+
+<main>
+
+<!-- STEP 1: Business Info -->
+<div class="page active" id="page1">
+  <div class="page-eyebrow">Step 1 of 5</div>
+  <h1 class="page-h">Tell Us About<br>Your Business</h1>
+  <p class="page-sub">We use this to generate a custom demo website for your business — in under 60 seconds.</p>
+
+  <div class="field-row">
+    <div class="field">
+      <label>Business Name</label>
+      <input type="text" id="bizName" placeholder="e.g. Mike's Auto Repair"/>
+    </div>
+    <div class="field">
+      <label>Your Name</label>
+      <input type="text" id="ownerName" placeholder="Your full name"/>
+    </div>
+  </div>
+  <div class="field">
+    <label>Email Address</label>
+    <input type="email" id="email" placeholder="you@yourbusiness.com"/>
+  </div>
+  <div class="field-row">
+    <div class="field">
+      <label>Industry / Type</label>
+      <select id="industry">
+        <option value="">Select your industry</option>
+        <option>Restaurant / Food</option>
+        <option>Auto Shop / Mechanic</option>
+        <option>Salon / Spa / Beauty</option>
+        <option>Contractor / Construction</option>
+        <option>Real Estate</option>
+        <option>Medical / Dental</option>
+        <option>Law Firm / Legal</option>
+        <option>Retail Store</option>
+        <option>Fitness / Gym</option>
+        <option>Consulting / Coaching</option>
+        <option>Non-Profit</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>City / State</label>
+      <input type="text" id="location" placeholder="e.g. Vineland, NJ"/>
+    </div>
+  </div>
+  <div class="field">
+    <label>What do you want your website to do? (optional)</label>
+    <textarea id="goals" placeholder="e.g. Get more phone calls, show our menu, let customers book appointments online..."></textarea>
+  </div>
+
+  <button class="btn-next" onclick="goToStep2()">Continue to Choose Plan</button>
+</div>
+
+<!-- STEP 2: Choose Tier -->
+<div class="page" id="page2">
+  <div class="page-eyebrow">Step 2 of 5</div>
+  <h1 class="page-h">Choose Your<br>Plan</h1>
+  <p class="page-sub">Select the package that fits your business. You can upgrade anytime.</p>
+
+  <div class="tier-grid">
+    <div class="tier-card" id="tier-starter" onclick="selectTier('starter',499,'https://buy.stripe.com/14A14n2CXbEG3ga9ZV3VC0b',49)">
+      <div class="tier-name">Starter</div>
+      <div class="tier-price">$499</div>
+      <div class="tier-cycle">one-time + $49/mo</div>
+      <ul class="tier-features">
+        <li>Up to 5 custom pages</li>
+        <li>Mobile-first design</li>
+        <li>Contact form + SEO</li>
+        <li>SSL &amp; hosting included</li>
+        <li>Live in 48–72 hours</li>
+      </ul>
+    </div>
+    <div class="tier-card" id="tier-growth" onclick="selectTier('growth',999,'https://buy.stripe.com/8x2eVdfpJ1022c67RN3VC0c',99)">
+      <div class="tier-popular">Most Popular</div>
+      <div class="tier-name">Growth</div>
+      <div class="tier-price">$999</div>
+      <div class="tier-cycle">one-time + $99/mo</div>
+      <ul class="tier-features">
+        <li>Up to 10 custom pages</li>
+        <li>Premium brand design</li>
+        <li>Full SEO + Analytics</li>
+        <li>Basic online store</li>
+        <li>Live in 48–72 hours</li>
+      </ul>
+    </div>
+    <div class="tier-card" id="tier-business" onclick="selectTier('business',1999,'https://buy.stripe.com/dRm7sL91lfUW8Au3Bx3VC0d',199)">
+      <div class="tier-name">Business</div>
+      <div class="tier-price">$1,999</div>
+      <div class="tier-cycle">one-time + $199/mo</div>
+      <ul class="tier-features">
+        <li>Up to 20 custom pages</li>
+        <li>Full brand identity</li>
+        <li>Full store + booking</li>
+        <li>AI chat integration</li>
+        <li>Unlimited revisions</li>
+      </ul>
+    </div>
+    <div class="tier-card" id="tier-elite" onclick="selectTier('elite',4999,'mailto:hsw365media@gmail.com?subject=Elite Plan Inquiry',399)">
+      <div class="tier-name">Elite</div>
+      <div class="tier-price">$4,999</div>
+      <div class="tier-cycle">50% deposit + $399/mo</div>
+      <ul class="tier-features">
+        <li>Unlimited pages</li>
+        <li>CRM + enterprise SEO</li>
+        <li>Full store + subscriptions</li>
+        <li>Dedicated manager</li>
+        <li>Weekly content updates</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn-back" onclick="goTo(1)">Back</button>
+    <button class="btn-next" id="nextBtn2" onclick="goToStep3()" disabled style="flex:1">Generate My Demo Site</button>
+  </div>
+</div>
+
+<!-- STEP 3: Demo -->
+<div class="page" id="page3">
+  <div class="page-eyebrow">Step 3 of 5</div>
+  <h1 class="page-h">Your Demo<br>Website</h1>
+  <p class="page-sub">Here is a preview of what your business website will look like. This is generated specifically for your business.</p>
+
+  <div class="demo-wrap">
+    <div class="demo-browser-bar">
+      <div class="demo-dots">
+        <div class="demo-dot" style="background:#FF5F57"></div>
+        <div class="demo-dot" style="background:#FEBC2E"></div>
+        <div class="demo-dot" style="background:#28C840"></div>
+      </div>
+      <div class="demo-url-bar" id="demoUrl">generating your site...</div>
+    </div>
+    <div class="demo-content">
+      <div class="demo-loading" id="demoLoading">
+        <div class="demo-spinner"></div>
+        <p>Building your demo website...</p>
+        <div class="demo-status" id="demoStatus">Analyzing your business details</div>
+      </div>
+      <iframe id="demoFrame" sandbox="allow-scripts allow-same-origin"></iframe>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>This is just a preview.</strong> Your final site will use your real photos, logo, brand colors, and content. Our team customizes everything after you sign up.
+  </div>
+
+  <div class="btn-row">
+    <button class="btn-back" onclick="goTo(2)">Back</button>
+    <button class="btn-next" onclick="goTo(4)" style="flex:1">I Like It — See Add-Ons</button>
+  </div>
+</div>
+
+<!-- STEP 4: Add-Ons -->
+<div class="page" id="page4">
+  <div class="page-eyebrow">Step 4 of 5</div>
+  <h1 class="page-h">Power Up<br>Your Site</h1>
+  <p class="page-sub">Add any of these services to your package. You can also add them later after launch.</p>
+
+  <div class="addon-grid">
+    <div class="addon-card" id="addon-chatbot" onclick="toggleAddon('chatbot',299,'https://buy.stripe.com/cNifZh4L5fUW4ke8VR3VC0i')">
+      <div class="addon-check">
+        <svg class="addon-check-inner" viewBox="0 0 12 10"><polyline points="1 5 4.5 8.5 11 1"/></svg>
+      </div>
+      <div class="addon-info">
+        <h4>AI Chatbot</h4>
+        <p>Answers customer questions and captures leads 24/7 automatically.</p>
+        <div class="addon-price">+ $299 one-time</div>
+      </div>
+    </div>
+    <div class="addon-card" id="addon-email" onclick="toggleAddon('email',199,'https://buy.stripe.com/bJefZh4L538a4keegb3VC0j')">
+      <div class="addon-check">
+        <svg class="addon-check-inner" viewBox="0 0 12 10"><polyline points="1 5 4.5 8.5 11 1"/></svg>
+      </div>
+      <div class="addon-info">
+        <h4>Email Marketing Setup</h4>
+        <p>Mailchimp or Klaviyo integration with a welcome email sequence.</p>
+        <div class="addon-price">+ $199 one-time</div>
+      </div>
+    </div>
+    <div class="addon-card" id="addon-content" onclick="toggleAddon('content',149,'https://buy.stripe.com/4gMaEX6TdeQS2c68VR3VC0k')">
+      <div class="addon-check">
+        <svg class="addon-check-inner" viewBox="0 0 12 10"><polyline points="1 5 4.5 8.5 11 1"/></svg>
+      </div>
+      <div class="addon-info">
+        <h4>Professional Copywriting</h4>
+        <p>SEO-optimized content written for each page of your site.</p>
+        <div class="addon-price">+ $149 per page</div>
+      </div>
+    </div>
+    <div class="addon-card" id="addon-priority" onclick="toggleAddon('priority',199,'https://buy.stripe.com/14AcN5dhBaAC03Y2xt3VC0l')">
+      <div class="addon-check">
+        <svg class="addon-check-inner" viewBox="0 0 12 10"><polyline points="1 5 4.5 8.5 11 1"/></svg>
+      </div>
+      <div class="addon-info">
+        <h4>Priority Maintenance</h4>
+        <p>Same-day updates, daily backups, and priority support response.</p>
+        <div class="addon-price">+ $199/mo</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn-back" onclick="goTo(3)">Back</button>
+    <button class="btn-next" onclick="goTo5Real()" style="flex:1">Continue to Checkout</button>
+  </div>
+</div>
+
+<!-- STEP 5: Checkout -->
+<div class="page" id="page5">
+  <div class="page-eyebrow">Step 5 of 5</div>
+  <h1 class="page-h">You Are<br>Almost Live</h1>
+  <p class="page-sub">Review your order and complete your deposit to start your project today.</p>
+
+  <div class="summary-box" id="summaryBox"></div>
+
+  <div class="info-box">
+    <strong>50% deposit starts your project immediately.</strong> Balance is due on launch day. Your site will be ready for review within 48–72 hours of your onboarding call.
+  </div>
+
+  <a href="#" id="payStripeBtn" target="_blank" class="btn-pay">Pay Deposit via Stripe</a>
+
+  <div class="or-divider">or pay with</div>
+
+  <a href="https://cash.app/$hsw365" target="_blank" class="btn-cashapp">Send via Cash App &nbsp; $hsw365</a>
+
+  <p style="font-size:11px;color:var(--dm);text-align:center;margin-top:14px;line-height:1.6">
+    Cash App: include your business name and plan in the payment note.<br>
+    Questions? <a href="mailto:hsw365media@gmail.com" style="color:var(--pul)">hsw365media@gmail.com</a>
+  </p>
+
+  <div class="btn-row" style="margin-top:20px">
+    <button class="btn-back" onclick="goTo(4)">Back</button>
+  </div>
+</div>
+
+</main>
+
+<script>
+var biz={name:'',owner:'',email:'',industry:'',location:'',goals:'',tier:'',tierPrice:0,tierLink:'',tierMo:0,addons:[]};
+var addonPrices={chatbot:299,email:199,content:149,priority:199};
+var addonLinks={
+  chatbot:'https://buy.stripe.com/cNifZh4L5fUW4ke8VR3VC0i',
+  email:'https://buy.stripe.com/bJefZh4L538a4keegb3VC0j',
+  content:'https://buy.stripe.com/4gMaEX6TdeQS2c68VR3VC0k',
+  priority:'https://buy.stripe.com/14AcN5dhBaAC03Y2xt3VC0l'
+};
+
+function goTo(n){
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active')});
+  document.getElementById('page'+n).classList.add('active');
+  window.scrollTo(0,0);
+  updateSteps(n);
+}
+
+function updateSteps(current){
+  for(var i=1;i<=5;i++){
+    var sc=document.getElementById('sc'+i);
+    var sl=document.getElementById('sl'+i);
+    var line=document.getElementById('line'+i);
+    sc.classList.remove('active','done');
+    sl.classList.remove('active','done');
+    if(line)line.classList.remove('done');
+    if(i<current){sc.classList.add('done');sl.classList.add('done');sc.innerHTML='&#10003;';if(line)line.classList.add('done')}
+    else if(i===current){sc.classList.add('active');sl.classList.add('active')}
+  }
+}
+
+function goToStep2(){
+  var n=document.getElementById('bizName').value.trim();
+  var e=document.getElementById('email').value.trim();
+  var ind=document.getElementById('industry').value;
+  if(!n){alert('Please enter your business name.');return}
+  if(!e||!e.includes('@')){alert('Please enter a valid email address.');return}
+  if(!ind){alert('Please select your industry.');return}
+  biz.name=n;biz.owner=document.getElementById('ownerName').value.trim();
+  biz.email=e;biz.industry=ind;biz.location=document.getElementById('location').value.trim();
+  biz.goals=document.getElementById('goals').value.trim();
+  goTo(2);
+}
+
+function selectTier(name,price,link,mo){
+  biz.tier=name;biz.tierPrice=price;biz.tierLink=link;biz.tierMo=mo;
+  document.querySelectorAll('.tier-card').forEach(function(c){c.classList.remove('selected')});
+  document.getElementById('tier-'+name).classList.add('selected');
+  document.getElementById('nextBtn2').disabled=false;
+}
+
+function goToStep3(){
+  goTo(3);
+  generateDemo();
+}
+
+var demoStatuses=[
+  'Analyzing your business details...',
+  'Designing your layout...',
+  'Building your homepage...',
+  'Adding your services section...',
+  'Setting up contact forms...',
+  'Finalizing your demo...'
+];
+
+async function generateDemo(){
+  var frame=document.getElementById('demoFrame');
+  var loading=document.getElementById('demoLoading');
+  var urlBar=document.getElementById('demoUrl');
+  frame.style.display='none';
+  loading.style.display='flex';
+
+  var slug=biz.name.toLowerCase().replace(/[^a-z0-9]/g,'')||'yourbusiness';
+  urlBar.textContent=slug+'.com';
+
+  var statusEl=document.getElementById('demoStatus');
+  var si=0;
+  var statusInterval=setInterval(function(){
+    if(si<demoStatuses.length){statusEl.textContent=demoStatuses[si];si++}
+  },500);
+
+  // Generate the demo using business-specific templating.
+  // Runs locally in-browser so it is instant and never fails, regardless of network conditions.
+  await new Promise(function(resolve){setTimeout(resolve,2800)}); // brief realistic build animation
+  clearInterval(statusInterval);
+
+  var html=buildFallbackDemo();
+  frame.srcdoc=html;
+  frame.style.display='block';
+  loading.style.display='none';
+}
+
+function buildFallbackDemo(){
+  var colors={
+    'Restaurant / Food':['#1A0800','#FF6B00'],
+    'Auto Shop / Mechanic':['#0D0D1A','#3B82F6'],
+    'Salon / Spa / Beauty':['#0D1A14','#EC4899'],
+    'Contractor / Construction':['#0D1421','#F59E0B'],
+    'Real Estate':['#001A1A','#10B981'],
+    'Medical / Dental':['#001018','#06B6D4'],
+    'Law Firm / Legal':['#0A0A14','#8B5CF6'],
+    'default':['#0A0A0F','#7C3AED']
+  };
+  var c=colors[biz.industry]||colors['default'];
+  return '<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet"><style>*{box-sizing:border-box;margin:0;padding:0}body{background:'+c[0]+';color:#F0F0F8;font-family:Barlow,sans-serif}nav{background:rgba(0,0,0,0.5);padding:16px 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.08)}.nav-logo{font-family:"Barlow Condensed",sans-serif;font-size:20px;font-weight:900;text-transform:uppercase;letter-spacing:1px}.nav-btn{background:'+c[1]+';color:#fff;padding:8px 20px;border-radius:4px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;cursor:pointer;border:none}.hero{padding:80px 40px;text-align:center;background:linear-gradient(135deg,'+c[0]+',#1A1030)}.hero h1{font-family:"Barlow Condensed",sans-serif;font-size:56px;font-weight:900;text-transform:uppercase;line-height:0.92;margin-bottom:20px}.hero h1 span{color:'+c[1]+'}.hero p{font-size:16px;color:rgba(240,240,248,0.65);max-width:500px;margin:0 auto 32px;line-height:1.7}.hero-btn{background:'+c[1]+';color:#fff;padding:14px 36px;border-radius:4px;font-size:14px;font-weight:700;border:none;cursor:pointer;text-transform:uppercase;letter-spacing:1px;margin-right:12px}.hero-btn2{background:transparent;border:1px solid rgba(255,255,255,0.2);color:#fff;padding:14px 36px;border-radius:4px;font-size:14px;font-weight:600;cursor:pointer}.services{padding:60px 40px;background:rgba(0,0,0,0.3)}.services h2{font-family:"Barlow Condensed",sans-serif;font-size:36px;font-weight:900;text-transform:uppercase;text-align:center;margin-bottom:8px}.services p.sub{color:rgba(240,240,248,0.5);text-align:center;margin-bottom:36px;font-size:14px}.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.svc-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:24px;border-top:3px solid '+c[1]+'}.svc-card h3{font-size:16px;font-weight:700;margin-bottom:8px}.svc-card p{font-size:13px;color:rgba(240,240,248,0.5);line-height:1.6}.contact{padding:60px 40px;background:linear-gradient(135deg,rgba(0,0,0,0.5),rgba(0,0,0,0.3))}.contact h2{font-family:"Barlow Condensed",sans-serif;font-size:36px;font-weight:900;text-transform:uppercase;text-align:center;margin-bottom:32px}.contact-form{max-width:500px;margin:0 auto;display:flex;flex-direction:column;gap:14px}.contact-form input,.contact-form textarea{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:12px 16px;color:#F0F0F8;font-family:Barlow,sans-serif;font-size:14px;outline:none}.contact-form textarea{height:100px;resize:vertical}.contact-form button{background:'+c[1]+';color:#fff;padding:13px;border-radius:4px;font-size:14px;font-weight:700;border:none;cursor:pointer;text-transform:uppercase;letter-spacing:1px}footer{background:rgba(0,0,0,0.6);padding:24px 40px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.07)}.footer-logo{font-family:"Barlow Condensed",sans-serif;font-size:16px;font-weight:900;text-transform:uppercase;letter-spacing:1px}.footer-copy{font-size:11px;color:rgba(240,240,248,0.3)}</style></head><body><nav><div class="nav-logo">'+biz.name+'</div><div style="display:flex;gap:16px;align-items:center"><span style="font-size:12px;color:rgba(240,240,248,0.5)">Services</span><span style="font-size:12px;color:rgba(240,240,248,0.5)">About</span><span style="font-size:12px;color:rgba(240,240,248,0.5)">Contact</span><button class="nav-btn">Book Now</button></div></nav><div class="hero"><h1>'+biz.name.toUpperCase().split(' ').join('<br>')+'<br><span>'+biz.industry.split('/')[0].trim()+'</span></h1><p>Professional '+biz.industry+' services in '+(biz.location||'your area')+'. Trusted by hundreds of local customers. Get in touch today for a free consultation.</p><button class="hero-btn">Get a Free Quote</button><button class="hero-btn2">Our Services</button></div><div class="services"><h2>What We Offer</h2><p class="sub">Everything you need from a trusted local '+biz.industry+' provider</p><div class="svc-grid"><div class="svc-card"><h3>Quality Service</h3><p>We deliver top-quality results every time. Our team is trained, certified, and dedicated to excellence.</p></div><div class="svc-card"><h3>Fast Turnaround</h3><p>We respect your time. Most jobs are completed on schedule with no surprises or delays.</p></div><div class="svc-card"><h3>Local &amp; Trusted</h3><p>Based right here in '+(biz.location||'your area')+', we are invested in our community and our customers.</p></div></div></div><div class="contact"><h2>Contact Us</h2><div class="contact-form"><input type="text" placeholder="Your Name"><input type="email" placeholder="Email Address"><input type="tel" placeholder="Phone Number"><textarea placeholder="Tell us about your project or question..."></textarea><button>Send Message</button></div></div><footer><div class="footer-logo">'+biz.name+'</div><div class="footer-copy">&copy; 2025 '+biz.name+'. All rights reserved.</div></footer></body></html>';
+}
+
+function toggleAddon(name,price,link){
+  var card=document.getElementById('addon-'+name);
+  var idx=biz.addons.findIndex(function(a){return a.name===name});
+  if(idx>-1){
+    biz.addons.splice(idx,1);
+    card.classList.remove('selected');
+  } else {
+    biz.addons.push({name:name,price:price,link:link});
+    card.classList.add('selected');
+  }
+}
+
+function buildSummary(){
+  var isElite = biz.tier === 'elite';
+  var deposit=Math.ceil(biz.tierPrice*0.5);
+  var addonTotal=biz.addons.reduce(function(s,a){return s+a.price},0);
+  var total=biz.tierPrice+addonTotal;
+  var rows='<div class="summary-row"><span class="summary-label">Plan</span><span class="summary-val">'+biz.tier.charAt(0).toUpperCase()+biz.tier.slice(1)+' Website Build</span></div>';
+  rows+='<div class="summary-row"><span class="summary-label">Build Fee</span><span class="summary-val">$'+biz.tierPrice.toLocaleString()+'</span></div>';
+  rows+='<div class="summary-row"><span class="summary-label">Monthly Maintenance</span><span class="summary-val">$'+biz.tierMo+'/mo</span></div>';
+  biz.addons.forEach(function(a){
+    rows+='<div class="summary-row"><span class="summary-label">'+a.name.charAt(0).toUpperCase()+a.name.slice(1)+' Add-On</span><span class="summary-val">+$'+a.price+'</span></div>';
+  });
+  rows+='<div class="summary-row"><span class="summary-label">Total Build Cost</span><span class="summary-val" style="font-family:var(--head);font-size:20px;font-weight:900;color:var(--pul)">$'+total.toLocaleString()+'</span></div>';
+  if(!isElite){
+    rows+='<div class="summary-row"><span class="summary-label">Deposit Due Today (50%)</span><span class="summary-val" style="color:var(--gr);font-weight:700">$'+deposit.toLocaleString()+'</span></div>';
+  } else {
+    rows+='<div class="summary-row"><span class="summary-label">Next Step</span><span class="summary-val" style="color:var(--gr);font-weight:700;font-size:13px">Custom Invoice Sent by Email</span></div>';
+  }
+  document.getElementById('summaryBox').innerHTML=rows;
+
+  var payBtn=document.getElementById('payStripeBtn');
+  payBtn.href=biz.tierLink;
+  if(isElite){
+    payBtn.textContent='Email Us to Get Started';
+    payBtn.removeAttribute('target');
+  } else {
+    payBtn.textContent='Pay Deposit via Stripe';
+    payBtn.setAttribute('target','_blank');
+  }
+}
+
+
+function goTo5Real(){
+  buildSummary();
+  goTo(5);
+}
+</script>
+</body>
+</html>
