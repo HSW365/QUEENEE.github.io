@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hsw365.github.io/queenee.github.io/sitemap.xml

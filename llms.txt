@@ -1,0 +1,10 @@
+# QUEENEE.io
+
+> AI-built websites for local businesses by HSW365 Media.
+
+Built by HSW365 Media LLC (Elvin Torres Sr., Hoodstar365).
+
+## Pages
+- https://hsw365.github.io/queenee.github.io/
+- https://hsw365.github.io/queenee.github.io/privacy.html
+- https://hsw365.github.io/queenee.github.io/signup.html
